@@ -1,2 +1,2 @@
-# Net201022
+# SotCo RPG
 SotCo RPG by SotCo
