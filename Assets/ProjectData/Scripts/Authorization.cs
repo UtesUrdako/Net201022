@@ -9,27 +9,55 @@ using UnityEngine;
 public class Authorization : MonoBehaviourPunCallbacks
 {
     [SerializeField] private string _playFabTitle;
+    [SerializeField] UiInformationPanel _uiInformationPanel;
 
     void Start()
     {
         if (string.IsNullOrEmpty(PlayFabSettings.staticSettings.TitleId))
             PlayFabSettings.staticSettings.TitleId = _playFabTitle;
+        _uiInformationPanel.loginButton.onClick.AddListener(LoginUser);
+        _uiInformationPanel.disconnectButton.onClick.AddListener(Disconnected);
+        SetActiveButton(true);
+    }
 
+    private void Disconnected()
+    {
+        if (PhotonNetwork.IsConnected)
+            PhotonNetwork.Disconnect();
+        else
+            DisplayInformation("Вы не подключены", Color.red);
+        SetActiveButton(true);
+
+    }
+    private void LoginUser()
+    {
         var request = new LoginWithCustomIDRequest
         {
             CustomId = "TestUser",
-            CreateAccount = true
+            // CreateAccount = true
         };
 
         PlayFabClientAPI.LoginWithCustomID(request,
             result =>
             {
-                Debug.Log(result.PlayFabId);
+                DisplayInformation(result.PlayFabId.ToString(), Color.green);
                 PhotonNetwork.AuthValues = new AuthenticationValues(result.PlayFabId);
                 PhotonNetwork.NickName = result.PlayFabId;
                 Connect();
             },
-            error => Debug.LogError(error));
+            error => DisplayInformation(error.ToString(), Color.red));
+    }
+
+    private void DisplayInformation(string text, Color color)
+    {
+        var textInfo = _uiInformationPanel.infoText;
+        textInfo.text = text;
+        textInfo.color = color;
+    }
+    private void SetActiveButton(bool isActive)
+    {
+        _uiInformationPanel.disconnectButton.gameObject.SetActive(!isActive);
+        _uiInformationPanel.loginButton.gameObject.SetActive(isActive);
     }
 
     private void Connect()
@@ -45,6 +73,8 @@ public class Authorization : MonoBehaviourPunCallbacks
             PhotonNetwork.ConnectUsingSettings();
             PhotonNetwork.GameVersion = PhotonNetwork.AppVersion;
         }
+        SetActiveButton(false);
+
     }
 
     public override void OnConnectedToMaster()
@@ -66,4 +96,12 @@ public class Authorization : MonoBehaviourPunCallbacks
         base.OnJoinedRoom();
         Debug.Log($"OnJoinedRoom {PhotonNetwork.CurrentRoom.Name}");
     }
+    public override void OnDisconnected(DisconnectCause cause)
+    {
+        base.OnDisconnected(cause);
+        DisplayInformation("Вы отключены", Color.green);
+        Debug.Log("Вы отключены");
+    }
+
+
 }
