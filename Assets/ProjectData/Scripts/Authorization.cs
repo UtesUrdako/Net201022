@@ -74,6 +74,7 @@ public class Authorization : MonoBehaviourPunCallbacks
 
     private void StartLogin()
     {
+        _connectionPanel.ResetButton.gameObject.SetActive(false);
         _connectionPanel.IsLogginInProgress = true;
         _connectionPanel.StartLoginCorutine();
 
