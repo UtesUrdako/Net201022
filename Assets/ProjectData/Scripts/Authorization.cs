@@ -93,6 +93,8 @@ public class Authorization : MonoBehaviourPunCallbacks
     private void Fail(PlayFabError error)
     {
         Debug.LogError(error);
+        _connectionPanel.IsLogginInProgress = false;
+        _connectionPanel.SetOfflineConnectionStatus();
     }
 
     private void Success(LoginResult result)
