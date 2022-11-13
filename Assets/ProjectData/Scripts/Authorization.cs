@@ -2,8 +2,10 @@ using Photon.Pun;
 using Photon.Realtime;
 using PlayFab;
 using PlayFab.ClientModels;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 public class Authorization : MonoBehaviourPunCallbacks
@@ -11,10 +13,14 @@ public class Authorization : MonoBehaviourPunCallbacks
     [SerializeField] private string _playFabTitle;
     [SerializeField] UiInformationPanel _uiInformationPanel;
 
+    private const string AUTHENTIFICATION_KEY = "AUTHENTIFICATION_KEY";
+
     void Start()
     {
         if (string.IsNullOrEmpty(PlayFabSettings.staticSettings.TitleId))
             PlayFabSettings.staticSettings.TitleId = _playFabTitle;
+
+      
         _uiInformationPanel.loginButton.onClick.AddListener(LoginUser);
         _uiInformationPanel.disconnectButton.onClick.AddListener(Disconnected);
         SetActiveButton(true);
@@ -31,21 +37,45 @@ public class Authorization : MonoBehaviourPunCallbacks
     }
     private void LoginUser()
     {
+
+        var needCreation = !PlayerPrefs.HasKey(AUTHENTIFICATION_KEY);
+        var ID = PlayerPrefs.GetString(AUTHENTIFICATION_KEY, Guid.NewGuid().ToString());
+
+
         var request = new LoginWithCustomIDRequest
         {
-            CustomId = "TestUser",
-            // CreateAccount = true
+            CustomId = ID,
+            CreateAccount = needCreation
         };
 
         PlayFabClientAPI.LoginWithCustomID(request,
             result =>
             {
+                PlayerPrefs.SetString(AUTHENTIFICATION_KEY, ID) ;
                 DisplayInformation(result.PlayFabId.ToString(), Color.green);
                 PhotonNetwork.AuthValues = new AuthenticationValues(result.PlayFabId);
                 PhotonNetwork.NickName = result.PlayFabId;
                 Connect();
+                DisplayDopInformation();
             },
             error => DisplayInformation(error.ToString(), Color.red));
+    }
+
+    private void DisplayDopInformation()
+    {
+        PlayFabClientAPI.GetAccountInfo(new GetAccountInfoRequest(),
+                    result =>
+                    {
+                        StringBuilder str = new StringBuilder();
+                        str.AppendLine($"Username: {result.AccountInfo.Username}");
+                        str.AppendLine($"PlayFabId: {result.AccountInfo.PlayFabId}");
+                        str.AppendLine($"Created: {result.AccountInfo.Created}");
+                        str.AppendLine($"PrivateInfo: {result.AccountInfo.PrivateInfo.Email}");
+                        _uiInformationPanel.dopInformation.text = str.ToString();
+                    },
+                    error => {
+                        _uiInformationPanel.dopInformation.text = error.ErrorMessage;
+                    });
     }
 
     private void DisplayInformation(string text, Color color)
@@ -66,7 +96,7 @@ public class Authorization : MonoBehaviourPunCallbacks
 
         if (PhotonNetwork.IsConnected)
         {
-            PhotonNetwork.JoinRandomOrCreateRoom(roomName: $"Room N{Random.Range(0, 9999)}");
+            PhotonNetwork.JoinRandomOrCreateRoom(roomName: $"Room N{UnityEngine.Random.Range(0, 9999)}");
         }
         else
         {
@@ -82,7 +112,7 @@ public class Authorization : MonoBehaviourPunCallbacks
         base.OnConnectedToMaster();
         Debug.Log("OnConnectedToMaster");
         if (!PhotonNetwork.InRoom)
-            PhotonNetwork.JoinRandomOrCreateRoom(roomName: $"Room N{Random.Range(0, 9999)}");
+            PhotonNetwork.JoinRandomOrCreateRoom(roomName: $"Room N{UnityEngine.Random.Range(0, 9999)}");
     }
 
     public override void OnCreatedRoom()
