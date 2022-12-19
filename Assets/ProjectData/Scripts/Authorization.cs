@@ -93,15 +93,20 @@ public class Authorization : MonoBehaviourPunCallbacks
     private void Connect()
     {
         PhotonNetwork.AutomaticallySyncScene = true;
-
+        PhotonNetwork.LocalPlayer.NickName = (string.IsNullOrEmpty( _uiInformationPanel.nameInputField.text)) 
+            ? $"User{UnityEngine.Random.Range(0, 9999)}" 
+            : _uiInformationPanel.nameInputField.text;
+        Debug.Log(PhotonNetwork.LocalPlayer.NickName);
         if (PhotonNetwork.IsConnected)
         {
-            PhotonNetwork.JoinRandomOrCreateRoom(roomName: $"Room N{UnityEngine.Random.Range(0, 9999)}");
+            //PhotonNetwork.JoinRandomOrCreateRoom(roomName: $"Room N{UnityEngine.Random.Range(0, 9999)}");
         }
         else
         {
             PhotonNetwork.ConnectUsingSettings();
             PhotonNetwork.GameVersion = PhotonNetwork.AppVersion;
+            PhotonNetwork.AutomaticallySyncScene = true;
+           
         }
         SetActiveButton(false);
 
@@ -111,21 +116,22 @@ public class Authorization : MonoBehaviourPunCallbacks
     {
         base.OnConnectedToMaster();
         Debug.Log("OnConnectedToMaster");
-        if (!PhotonNetwork.InRoom)
-            PhotonNetwork.JoinRandomOrCreateRoom(roomName: $"Room N{UnityEngine.Random.Range(0, 9999)}");
+        PhotonNetwork.JoinLobby(TypedLobby.Default);
+        //if (!PhotonNetwork.InRoom)
+        //    PhotonNetwork.JoinRandomOrCreateRoom(roomName: $"Room N{UnityEngine.Random.Range(0, 9999)}");
     }
 
-    public override void OnCreatedRoom()
-    {
-        base.OnCreatedRoom();
-        Debug.Log("OnCreatedRoom");
-    }
+    //public override void OnCreatedRoom()
+    //{
+    //    base.OnCreatedRoom();
+    //    Debug.Log("OnCreatedRoom");
+    //}
 
-    public override void OnJoinedRoom()
-    {
-        base.OnJoinedRoom();
-        Debug.Log($"OnJoinedRoom {PhotonNetwork.CurrentRoom.Name}");
-    }
+    //public override void OnJoinedRoom()
+    //{
+    //    base.OnJoinedRoom();
+    //    Debug.Log($"OnJoinedRoom {PhotonNetwork.CurrentRoom.Name}");
+    //}
     public override void OnDisconnected(DisconnectCause cause)
     {
         base.OnDisconnected(cause);

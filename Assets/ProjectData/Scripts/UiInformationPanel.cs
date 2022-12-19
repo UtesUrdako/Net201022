@@ -9,6 +9,7 @@ public class UiInformationPanel : MonoBehaviour
     [SerializeField] public Button loginButton;
     [SerializeField] public Button disconnectButton;
     [SerializeField] public TMP_Text infoText;
-    [SerializeField] public TMP_Text dopInformation;
+    [SerializeField] public TMP_Text dopInformation; 
+    [SerializeField] public TMP_InputField nameInputField;
 
 }
