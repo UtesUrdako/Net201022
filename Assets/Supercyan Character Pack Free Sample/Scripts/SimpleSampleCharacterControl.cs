@@ -43,7 +43,8 @@ public class SimpleSampleCharacterControl : MonoBehaviourPun
     private bool m_isGrounded;
 
     private List<Collider> m_collisions = new List<Collider>();
-
+    [SerializeField] private GameObject AddedComponent;
+     private GameObject Addedobj;
     private void Awake()
     {
         if (!m_animator) { gameObject.GetComponent<Animator>(); }
@@ -112,6 +113,21 @@ public class SimpleSampleCharacterControl : MonoBehaviourPun
         if (!m_jumpInput && Input.GetKey(KeyCode.Space))
         {
             m_jumpInput = true;
+        }
+
+        if ( Input.GetKey(KeyCode.Escape))
+        {
+            if (!AddedComponent.active)
+            {
+                AddedComponent.SetActive(true);
+                Addedobj = PhotonNetwork.Instantiate("Cube", AddedComponent.transform.position, Quaternion.identity);
+                
+            }
+            else
+            {
+                AddedComponent.SetActive(false);
+                Destroy(Addedobj);
+            }
         }
     }
 
