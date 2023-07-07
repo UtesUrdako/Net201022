@@ -1,0 +1,90 @@
+{
+  "CatalogVersion": "First",
+  "Catalog": [
+    {
+      "ItemId": "One",
+      "ItemClass": "Resource",
+      "CatalogVersion": "First",
+      "DisplayName": "My first item",
+      "Description": null,
+      "VirtualCurrencyPrices": {
+        "RM": 100,
+        "GD": 1000
+      },
+      "RealCurrencyPrices": {},
+      "Tags": [],
+      "CustomData": null,
+      "Consumable": {
+        "UsageCount": null,
+        "UsagePeriod": null,
+        "UsagePeriodGroup": null
+      },
+      "Container": null,
+      "Bundle": null,
+      "CanBecomeCharacter": false,
+      "IsStackable": true,
+      "IsTradable": false,
+      "ItemImageUrl": null,
+      "IsLimitedEdition": false,
+      "InitialLimitedEditionCount": 0,
+      "ActivatedMembership": null
+    },
+    {
+      "ItemId": "Two",
+      "ItemClass": "Resource",
+      "CatalogVersion": "First",
+      "DisplayName": "My second item",
+      "Description": null,
+      "VirtualCurrencyPrices": {
+        "RM": 200,
+        "GD": 2000
+      },
+      "RealCurrencyPrices": {},
+      "Tags": [],
+      "CustomData": null,
+      "Consumable": {
+        "UsageCount": null,
+        "UsagePeriod": null,
+        "UsagePeriodGroup": null
+      },
+      "Container": null,
+      "Bundle": null,
+      "CanBecomeCharacter": false,
+      "IsStackable": true,
+      "IsTradable": false,
+      "ItemImageUrl": null,
+      "IsLimitedEdition": false,
+      "InitialLimitedEditionCount": 0,
+      "ActivatedMembership": null
+    },
+    {
+      "ItemId": "Three",
+      "ItemClass": "Resource",
+      "CatalogVersion": "First",
+      "DisplayName": "My third item",
+      "Description": null,
+      "VirtualCurrencyPrices": {
+        "RM": 300,
+        "GD": 3000
+      },
+      "RealCurrencyPrices": {},
+      "Tags": [],
+      "CustomData": null,
+      "Consumable": {
+        "UsageCount": null,
+        "UsagePeriod": null,
+        "UsagePeriodGroup": null
+      },
+      "Container": null,
+      "Bundle": null,
+      "CanBecomeCharacter": false,
+      "IsStackable": true,
+      "IsTradable": false,
+      "ItemImageUrl": null,
+      "IsLimitedEdition": false,
+      "InitialLimitedEditionCount": 0,
+      "ActivatedMembership": null
+    }
+  ],
+  "DropTables": []
+}
