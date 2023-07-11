@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_Root/Scenes/Playfab.unity
+    guid: 17da67768a6c38c438967e13b481a1e4
+  - enabled: 1
+    path: Assets/_Root/Scenes/Lobby.unity
+    guid: b0e9336e2c66d3c41b1dad2aabf66f5e
+  - enabled: 1
+    path: Assets/_Root/Scenes/Room.unity
+    guid: bb3444bc4459a97438871867ffdfb7ff
   m_configObjects: {}
