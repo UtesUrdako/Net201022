@@ -58,7 +58,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: -1
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -111,7 +113,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2607264626782080043}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d5871cf6b720ca4da7c45c109552e08, type: 3}
+  m_Script: {fileID: 11500000, guid: a8055b53c0b1e70409e7a072dc6e5460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3551313987717481963
@@ -296,9 +298,17 @@ Camera:
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -419,9 +429,17 @@ CharacterController:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5005283535689402915}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
@@ -438,11 +456,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5005283535689402915}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49bd819c56c5d244f97cc2728f5cb86d, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ae90d42bfc3e0040b00240077fb5752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _characterController: {fileID: 785071403360367971}
-  _cameraTransform: {fileID: 4976836400989313320}
+  _cameraTransform: {fileID: 7304809412181150031}
   _cameraGameObject: {fileID: 4976836400989313325}
   _playerHPCanvas: {fileID: 6994698092722018310}
   _playerHPText: {fileID: 155051273850837439}
@@ -538,8 +556,17 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5206322803926999060}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
+  serializedVersion: 2
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1

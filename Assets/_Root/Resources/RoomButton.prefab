@@ -34,7 +34,7 @@ RectTransform:
   m_Children:
   - {fileID: 122215550159139756}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 122215550073512789}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd1c5b66661d48d44852f0ccfe4556b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 3021ac06d93e7ca4e81c99105ef6ac33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 122215550073512787}
