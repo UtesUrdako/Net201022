@@ -1,0 +1,27 @@
+{
+  "CatalogVersion": "main",
+  "Catalog": [
+    {
+      "ItemId": "One",
+      "ItemClass": null,
+      "CatalogVersion": "main",
+      "DisplayName": "My first item",
+      "Description": null,
+      "VirtualCurrencyPrices": null,
+      "RealCurrencyPrices": null,
+      "Tags": null,
+      "CustomData": null,
+      "Consumable": null,
+      "Container": null,
+      "Bundle": null,
+      "CanBecomeCharacter": false,
+      "IsStackable": false,
+      "IsTradable": false,
+      "ItemImageUrl": null,
+      "IsLimitedEdition": false,
+      "InitialLimitedEditionCount": 0,
+      "ActivatedMembership": null
+    }
+  ],
+  "DropTables": []
+}
