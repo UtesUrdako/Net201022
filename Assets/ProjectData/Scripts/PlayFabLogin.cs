@@ -12,6 +12,8 @@ public class PlayFabLogin : MonoBehaviour
     [SerializeField]
     private TMP_Text _loginResultText;
 
+    private const string AuthGuidKey = "auth_guid_key";
+
     private void Start()
     {
         _loginButton.onClick.AddListener(LogIn);
@@ -23,13 +25,21 @@ public class PlayFabLogin : MonoBehaviour
 
     private void LogIn()
     {
+        var accountExists = PlayerPrefs.HasKey(AuthGuidKey);
+        var id = PlayerPrefs.GetString(AuthGuidKey, Guid.NewGuid().ToString());
+
         var request = new LoginWithCustomIDRequest
         {
-            CustomId = "Player 1",
-            CreateAccount = true
+            CustomId = id,
+            CreateAccount = !accountExists
         };
 
-        PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccess, OnLoginError);
+        PlayFabClientAPI.LoginWithCustomID(request, 
+            result => 
+            {
+                PlayerPrefs.SetString(AuthGuidKey, id);
+                OnLoginSuccess(result);
+            }, OnLoginError);
     }
 
     private void OnLoginSuccess(LoginResult result)
