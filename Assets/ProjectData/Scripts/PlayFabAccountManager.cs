@@ -6,7 +6,13 @@ using PlayFab.ClientModels;
 public class PlayFabAccountManager : MonoBehaviour
 {
     [SerializeField]
-    private TMP_Text _titleLabel;
+    private TMP_Text _idLabel;
+
+    [SerializeField]
+    private TMP_Text _usernameLabel;
+
+    [SerializeField]
+    private TMP_Text _accCreatedLabel;
 
     private void Start()
     {
@@ -15,7 +21,9 @@ public class PlayFabAccountManager : MonoBehaviour
 
     private void OnGetAccount(GetAccountInfoResult result)
     {
-        _titleLabel.text = $"PlayFab Id: {result.AccountInfo.PlayFabId}";
+        _idLabel.text = $"PlayFab Id: {result.AccountInfo.PlayFabId}";
+        _usernameLabel.text = $"Username: {result.AccountInfo.Username}";
+        _accCreatedLabel.text = $"Account created: {result.AccountInfo.Created}";
     }
 
     private void OnError(PlayFabError error)

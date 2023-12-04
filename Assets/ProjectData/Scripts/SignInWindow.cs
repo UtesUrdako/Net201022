@@ -8,6 +8,9 @@ public class SignInWindow : AccountDataWindowBase
     [SerializeField]
     private Button _signInButton;
 
+    [SerializeField]
+    private Image _loadingImage;
+
     protected override void SubscriptionsElementsUI()
     {
         base.SubscriptionsElementsUI();
@@ -17,6 +20,7 @@ public class SignInWindow : AccountDataWindowBase
 
     private void SignIn()
     {
+        _loadingImage.enabled = true;
         PlayFabClientAPI.LoginWithPlayFab(new LoginWithPlayFabRequest
         {
             Username = _username,
@@ -24,9 +28,11 @@ public class SignInWindow : AccountDataWindowBase
         }, result =>
         {
             Debug.Log($"Success: {_username}");
+            _loadingImage.enabled = false;
             EnterInGameScene();
         }, error =>
         {
+            _loadingImage.enabled = false;
             Debug.LogError($"Fail: {error.ErrorMessage}");
         });
     }

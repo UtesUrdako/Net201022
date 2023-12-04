@@ -17,7 +17,7 @@ MonoBehaviour:
   SelectedStudio: EddanielGBTest
   SdkPath: Assets/PlayFabSDK
   EdExPath: 
-  LocalCloudScriptPath: 
+  LocalCloudScriptPath: C:/Users/eddan/Documents/GitHub/MultiplayerGame/Assets/PlayFabEditorExtensions/Editor/Resources/.CloudScript.js
   PanelIsShown: 0
-  curMainMenuIdx: 1
+  curMainMenuIdx: 4
   curSubMenuIdx: 0
