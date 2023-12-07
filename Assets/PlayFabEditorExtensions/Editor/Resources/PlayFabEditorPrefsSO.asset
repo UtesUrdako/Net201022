@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: PlayFabEditorPrefsSO
   m_EditorClassIdentifier: 
   DevAccountEmail: eddanielmoonkin@gmail.com
-  DevAccountToken: djhzg9dgnwjw6e61nyj5s6hqzdtia9t5rj5d8hj3gcjft1stuzg6ukwdhpiw6f6zsreo7t3xktu5x61i51rhqxqt79n69kny93ikoucqyun3aopahmtfdeooofj4hatqycqj11hb13ro9p7jgh3raapm5mn1w6j4tix5jcutcd5s9uszzpobgqnduck868txctp7rygf
-  SelectedStudio: EddanielGBTest
+  DevAccountToken: s99d155nxgdp8w13tjcf7jbb9nmw69kaqcwwgcjof8qrq3cfuhbihydxxyh5sgeewdgrzsieznh6g4o5hhzh1qkbwqowxfm17otqorwedqfst57z6ikq51nw7c9ngxrwgtsdyekhoki9emje11tdz7uwkousuzzqbnfm94scf44ss8ikrn9ftaey7smw4sskwoj7k8a6
+  SelectedStudio: 
   SdkPath: Assets/PlayFabSDK
   EdExPath: 
-  LocalCloudScriptPath: C:/Users/eddan/Documents/GitHub/MultiplayerGame/Assets/PlayFabEditorExtensions/Editor/Resources/.CloudScript.js
+  LocalCloudScriptPath: 
   PanelIsShown: 0
-  curMainMenuIdx: 4
-  curSubMenuIdx: 0
+  curMainMenuIdx: 1
+  curSubMenuIdx: 2
