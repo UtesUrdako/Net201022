@@ -1,0 +1,156 @@
+{
+  "CatalogVersion": "main",
+  "Catalog": [
+    {
+      "ItemId": "wooden_bow_id",
+      "ItemClass": "bow",
+      "CatalogVersion": "main",
+      "DisplayName": "Wooden Bow",
+      "Description": "Oh, it's you first bow!",
+      "VirtualCurrencyPrices": {
+        "SC": 5
+      },
+      "RealCurrencyPrices": null,
+      "Tags": [
+        "bow",
+        "weapon"
+      ],
+      "CustomData": null,
+      "Consumable": {
+        "UsageCount": null,
+        "UsagePeriod": null,
+        "UsagePeriodGroup": null
+      },
+      "Container": null,
+      "Bundle": null,
+      "CanBecomeCharacter": false,
+      "IsStackable": false,
+      "IsTradable": true,
+      "ItemImageUrl": null,
+      "IsLimitedEdition": false,
+      "InitialLimitedEditionCount": 0,
+      "ActivatedMembership": null
+    },
+    {
+      "ItemId": "wooden_sword_id",
+      "ItemClass": "sword",
+      "CatalogVersion": "main",
+      "DisplayName": "Wooden Sword",
+      "Description": "Oh, that's your first sword!",
+      "VirtualCurrencyPrices": {
+        "SC": 5
+      },
+      "RealCurrencyPrices": null,
+      "Tags": [
+        "sword",
+        "weapon"
+      ],
+      "CustomData": null,
+      "Consumable": {
+        "UsageCount": null,
+        "UsagePeriod": null,
+        "UsagePeriodGroup": null
+      },
+      "Container": null,
+      "Bundle": null,
+      "CanBecomeCharacter": false,
+      "IsStackable": false,
+      "IsTradable": true,
+      "ItemImageUrl": null,
+      "IsLimitedEdition": false,
+      "InitialLimitedEditionCount": 0,
+      "ActivatedMembership": null
+    },
+    {
+      "ItemId": "steel_sword_id",
+      "ItemClass": "sword",
+      "CatalogVersion": "main",
+      "DisplayName": "Steel Sword",
+      "Description": "It looks gorgeous!",
+      "VirtualCurrencyPrices": {
+        "SC": 10
+      },
+      "RealCurrencyPrices": null,
+      "Tags": [
+        "sword",
+        "weapon"
+      ],
+      "CustomData": null,
+      "Consumable": {
+        "UsageCount": null,
+        "UsagePeriod": null,
+        "UsagePeriodGroup": null
+      },
+      "Container": null,
+      "Bundle": null,
+      "CanBecomeCharacter": false,
+      "IsStackable": false,
+      "IsTradable": true,
+      "ItemImageUrl": null,
+      "IsLimitedEdition": false,
+      "InitialLimitedEditionCount": 0,
+      "ActivatedMembership": null
+    },
+    {
+      "ItemId": "cool_hat_id",
+      "ItemClass": "head",
+      "CatalogVersion": "main",
+      "DisplayName": "Cool Hat",
+      "Description": "No sun will hit you!",
+      "VirtualCurrencyPrices": {
+        "SC": 1
+      },
+      "RealCurrencyPrices": null,
+      "Tags": [
+        "head",
+        "armor"
+      ],
+      "CustomData": null,
+      "Consumable": {
+        "UsageCount": null,
+        "UsagePeriod": null,
+        "UsagePeriodGroup": null
+      },
+      "Container": null,
+      "Bundle": null,
+      "CanBecomeCharacter": false,
+      "IsStackable": false,
+      "IsTradable": true,
+      "ItemImageUrl": null,
+      "IsLimitedEdition": false,
+      "InitialLimitedEditionCount": 0,
+      "ActivatedMembership": null
+    },
+    {
+      "ItemId": "chest_armor_id",
+      "ItemClass": "chest",
+      "CatalogVersion": "main",
+      "DisplayName": "Chest Armor",
+      "Description": "Huh! Now it feels much more safer.",
+      "VirtualCurrencyPrices": {
+        "SC": 10
+      },
+      "RealCurrencyPrices": null,
+      "Tags": [
+        "chest",
+        "armor"
+      ],
+      "CustomData": null,
+      "Consumable": {
+        "UsageCount": null,
+        "UsagePeriod": null,
+        "UsagePeriodGroup": null
+      },
+      "Container": null,
+      "Bundle": null,
+      "CanBecomeCharacter": false,
+      "IsStackable": false,
+      "IsTradable": true,
+      "ItemImageUrl": null,
+      "IsLimitedEdition": false,
+      "InitialLimitedEditionCount": 0,
+      "ActivatedMembership": null
+    }
+  ],
+  "DropTables": []
+}
