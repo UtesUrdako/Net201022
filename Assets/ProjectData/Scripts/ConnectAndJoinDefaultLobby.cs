@@ -5,6 +5,7 @@ using Photon.Realtime;
 using TMPro;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 public class ConnectAndJoinDefaultLobby : MonoBehaviour, IConnectionCallbacks, IMatchmakingCallbacks, ILobbyCallbacks
 {
@@ -136,6 +137,7 @@ public class ConnectAndJoinDefaultLobby : MonoBehaviour, IConnectionCallbacks, I
     {
         _roomList.SetActive(false);
         Debug.Log($"Room created: {_lbc.CurrentRoom.Name}");
+        SceneManager.LoadScene(3);
     }
 
     public void OnCreateRoomFailed(short returnCode, string message)
@@ -174,6 +176,8 @@ public class ConnectAndJoinDefaultLobby : MonoBehaviour, IConnectionCallbacks, I
         _createRoomForFriendButton.gameObject.SetActive(false);
         _roomNameInput.gameObject.SetActive(false);
         _roomList.SetActive(false);
+        SceneManager.LoadScene(3);
+
     }
 
     public void OnJoinRandomFailed(short returnCode, string message)
