@@ -29,10 +29,13 @@ namespace Photon.Pun.Demo.PunBasics
 
 	    [Tooltip("UI Text to display Player's Name")]
 	    [SerializeField]
-	    private Text playerNameText;
+	    private Text _playerNameText;
 
 		[SerializeField]
 		private Text _playerIdText;
+
+		[SerializeField]
+		private Text _playerMaxHPText;
 
 		[Tooltip("UI Slider to display Player's Health")]
 	    [SerializeField]
@@ -62,6 +65,7 @@ namespace Photon.Pun.Demo.PunBasics
 
 			_canvasGroup = this.GetComponent<CanvasGroup>();
 			
+			
 			this.transform.SetParent(GameObject.Find("Canvas").GetComponent<Transform>(), false);
 		}
 
@@ -77,7 +81,7 @@ namespace Photon.Pun.Demo.PunBasics
 				return;
 			}
 
-
+			_playerMaxHPText.text = target.Health.ToString();
 			// Reflect the Player Health
 			if (playerHealthSlider != null) {
 				playerHealthSlider.value = target.Health;
@@ -141,8 +145,9 @@ namespace Photon.Pun.Demo.PunBasics
 				characterControllerHeight = _characterController.height;
 			}
 
-			if (playerNameText != null) {
-                playerNameText.text = this.target.photonView.Owner.NickName;
+			if (_playerNameText != null) {
+				//_playerNameText.text = this.target.photonView.Owner.NickName;
+				_playerNameText.text = this.target.photonView.Owner.NickName;
 			}
 		}
 

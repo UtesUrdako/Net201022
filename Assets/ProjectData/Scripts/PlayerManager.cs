@@ -10,6 +10,10 @@
 
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Photon;
+using PlayFab;
+using PlayFab.ClientModels;
+using System.Collections.Generic;
 
 namespace Photon.Pun.Demo.PunBasics
 {
@@ -23,8 +27,9 @@ namespace Photon.Pun.Demo.PunBasics
     {
         #region Public Fields
 
-        [Tooltip("The current Health of our player")]
-        public float Health = 1f;
+        //[Tooltip("The current Health of our player")]
+        //public float Health = 1f;
+        public float Health;
 
         [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
         public static GameObject LocalPlayerInstance;
@@ -41,8 +46,8 @@ namespace Photon.Pun.Demo.PunBasics
         [SerializeField]
         private GameObject beams;
 
+        private string _playFabId;
         private float _id;
-
         public float Id
         {
             get => photonView.ViewID;
@@ -76,6 +81,24 @@ namespace Photon.Pun.Demo.PunBasics
             {
                 LocalPlayerInstance = gameObject;
             }
+
+            PlayFabClientAPI.GetAccountInfo(new GetAccountInfoRequest(), result => {
+                _playFabId = result.AccountInfo.PlayFabId;
+                Debug.Log(_playFabId + " : PlayFabId");
+            }, error => Debug.Log("Error playFabId"));
+
+            PlayFabClientAPI.UpdateUserData(new UpdateUserDataRequest
+            {
+                Data = new Dictionary<string, string>
+                {
+                   { "HP", "200"}
+                }
+            },
+            result =>
+            {
+                GetUserData(_playFabId, "HP");
+            },
+            error => Debug.Log("OnLoginError"));
 
             // #Critical
             // we flag as don't destroy on load so that instance survives level synchronization, thus giving a seamless experience when levels load.
@@ -159,6 +182,23 @@ namespace Photon.Pun.Demo.PunBasics
         public override void OnLeftRoom()
         {
             this.leavingRoom = false;
+        }
+
+        private void GetUserData(string PlayFabId, string keyData)
+        {
+            PlayFabClientAPI.GetUserData(new GetUserDataRequest
+            {
+                PlayFabId = _playFabId
+            },
+             result =>
+             {
+                 if (result.Data.ContainsKey(keyData))
+                 {
+                     Debug.Log($"{keyData}: {result.Data[keyData].Value}");
+                     Health = float.Parse(result.Data[keyData].Value);
+                 }
+             },
+             error => Debug.Log("OnGetDataError"));
         }
 
         /// <summary>
@@ -288,14 +328,14 @@ namespace Photon.Pun.Demo.PunBasics
             {
                 // We own this player: send the others our data
                 stream.SendNext(this.IsFiring);
-                stream.SendNext(this.Health);
+                stream.SendNext(Health);
                 stream.SendNext(Id);
             }
             else
             {
                 // Network player, receive data
                 this.IsFiring = (bool)stream.ReceiveNext();
-                this.Health = (float)stream.ReceiveNext();
+                Health = (float)stream.ReceiveNext();
                 Id = (float)stream.ReceiveNext();
             }
         }

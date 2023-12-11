@@ -6,6 +6,7 @@ using TMPro;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class PlayFabLogin : MonoBehaviour
 {
@@ -52,6 +53,7 @@ public class PlayFabLogin : MonoBehaviour
         SetUserData(result.PlayFabId);
         //MakePurchase();
         GetInvetory();
+        SceneManager.LoadScene(1);
     }
 
     private void GetInvetory()
@@ -105,7 +107,7 @@ public class PlayFabLogin : MonoBehaviour
         {
             Debug.Log("SetUserData");
             GetUserData(playFabId, "time_receive_daily_reward");
-        }, OnLoginError);
+        }, OnLoginError);        
     }
 
     private void GetUserData(string playFabId, string keyData)
