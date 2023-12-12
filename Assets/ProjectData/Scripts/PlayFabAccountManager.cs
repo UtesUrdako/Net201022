@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 using PlayFab;
 using PlayFab.ClientModels;
@@ -29,6 +29,9 @@ public class PlayFabAccountManager : MonoBehaviour
 
     [SerializeField]
     private List<SlotCharacterWidget> _slots;
+
+    private SlotCharacterWidget _currentSlot;
+    private CharacterResult _currentCharacter;
 
     private string _characterName;
 
@@ -66,18 +69,25 @@ public class PlayFabAccountManager : MonoBehaviour
                 slot.ShowEmptySlot();
             }
         }
-        else if (characters.Count > 0 && characters.Count <= _slots.Count)
+        else if (characters.Count > 0 && characters.Count <= _slots.Count) //как можно сделать этот блок лучше?
         {
-            PlayFabClientAPI.GetCharacterStatistics(new GetCharacterStatisticsRequest
+            var i = 0; 
+            foreach(var slot in _slots)
             {
-                CharacterId = characters.First().CharacterId
-            }, result =>
-            {
-                var level = result.CharacterStatistics["Level"].ToString();
-                var gold = result.CharacterStatistics["Gold"].ToString();
-
-                _slots.First().ShowInfoCharacterSlot(characters.First().CharacterName, level, gold);
-            }, OnError);
+                var _characterName = characters[i].CharacterName;
+                PlayFabClientAPI.GetCharacterStatistics(new GetCharacterStatisticsRequest { CharacterId = characters[i].CharacterId },
+                result =>
+                {
+                    var characterName = _characterName;
+                    var level = result.CharacterStatistics["Level"].ToString();
+                    var gold = result.CharacterStatistics["Gold"].ToString();
+                    var health = result.CharacterStatistics["Health"].ToString();
+                    var attack = result.CharacterStatistics["Attack"].ToString();
+                    var exp = result.CharacterStatistics["Experience"].ToString();
+                    slot.ShowInfoCharacterSlot(characterName, level, gold, health, attack, exp);
+                }, OnError);
+                i++;
+            }              
         }
         else
         {
@@ -121,7 +131,10 @@ public class PlayFabAccountManager : MonoBehaviour
             CharacterStatistics =  new Dictionary<string, int>
             {
                 {"Level", 1 },
-                {"Gold", 0 }
+                {"Gold", 0 },
+                {"Health", 100 },
+                {"Attack", 10 },
+                {"Experience", 0 }
             }
         }, result =>
         {

@@ -22,13 +22,26 @@ public class SlotCharacterWidget : MonoBehaviour
     [SerializeField]
     private TMP_Text _goldLabel;
 
+    [SerializeField]
+    private TMP_Text _healthLabel;
+
+    [SerializeField]
+    private TMP_Text _attackLabel;
+
+    [SerializeField]
+    private TMP_Text _expLabel;
+
     public Button SlotButton => _button;
 
-    public void ShowInfoCharacterSlot(string name, string level, string gold) 
+    public void ShowInfoCharacterSlot(string name, string level, string gold, string health, string attack, string exp) 
     { 
         _nameLabel.text = name;
         _levelLabel.text = $"Level: {level}";
         _goldLabel.text = $"Gold: {gold}";
+        _healthLabel.text = $"HP: {health}";
+        _attackLabel.text = $"AP: {attack}";
+        _expLabel.text = $"XP: {exp}";
+
 
         _infoCharacterSlot.SetActive(true);
         _emptySlot.SetActive(false);
